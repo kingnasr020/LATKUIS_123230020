@@ -9,73 +9,103 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  // Gunakan controller agar input lebih stabil
   final TextEditingController _uNameController = TextEditingController();
   final TextEditingController _passController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Login Page"),
-        centerTitle: true,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center, // Biar ke tengah
-          children: [
-            TextField(
-              controller: _uNameController,
-              decoration: const InputDecoration(
-                labelText: 'Username (NIM)',
-                border: OutlineInputBorder(),
-              ),
+      backgroundColor: const Color(0xFFFDF5F9),
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(24.0),
+          child: Card(
+            elevation: 8,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15),
             ),
-            const SizedBox(height: 12),
-            TextField(
-              controller: _passController,
-              obscureText: true,
-              decoration: const InputDecoration(
-                labelText: 'Password (Prodi)',
-                border: OutlineInputBorder(),
-              ),
-            ),
-            const SizedBox(height: 20),
-            SizedBox(
-              width: double.infinity, // Tombol selebar layar
-              child: ElevatedButton(
-                onPressed: () {
-                  String uName = _uNameController.text;
-                  String pass = _passController.text;
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 40),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const Text(
+                    "Login",
+                    style: TextStyle(
+                      fontSize: 28,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(height: 30),
+                  TextField(
+                    controller: _uNameController,
+                    decoration: InputDecoration(
+                      hintText: 'Username',
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 15),
+                  TextField(
+                    controller: _passController,
+                    obscureText: true,
+                    decoration: InputDecoration(
+                      hintText: 'Password',
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 30),
+                  SizedBox(
+                    width: double.infinity,
+                    height: 50,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        String uName = _uNameController.text;
+                        String pass = _passController.text;
 
-                  // Sesuaikan dengan NIM dan Prodi kamu
-                  if (uName == '123230020' && pass == 'Informatika') {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => HomePage(username: uName),
+                        if (uName == '123230020' && pass == 'Informatika') {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => HomePage(username: uName),
+                            ),
+                          );
+                        } else {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text("Login Gagal!"),
+                              backgroundColor: Colors.red,
+                            ),
+                          );
+                        }
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xFFF5F0F8),
+                        foregroundColor: const Color(0xFF7B5CAB),
+                        elevation: 0,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(25),
+                          side: BorderSide(color: Colors.grey.shade300),
+                        ),
                       ),
-                    );
-                  } else {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text("Login Gagal! Username/Password Salah"),
-                        backgroundColor: Colors.red,
+                      child: const Text(
+                        'Login',
+                        style: TextStyle(fontWeight: FontWeight.bold),
                       ),
-                    );
-                  }
-                },
-                child: const Text('Login'),
+                    ),
+                  ),
+                ],
               ),
             ),
-          ],
+          ),
         ),
       ),
     );
   }
 
-  // Bersihkan controller saat tidak dipakai
   @override
   void dispose() {
     _uNameController.dispose();

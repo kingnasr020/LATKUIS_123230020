@@ -1,4 +1,4 @@
-import 'animal_model.dart';
+import 'package:latkuis020/models/animal_model.dart';
 
 List<Animal> dummyAnimals = [
   Animal(
@@ -19,5 +19,40 @@ List<Animal> dummyAnimals = [
     activities: ["Basking", "Hunting", "Exploring"],
     image: "https://images.pexels.com/photos/2664272/pexels-photo-2664272.jpeg",
   ),
-  // Tambahkan data hewan lainnya di sini sesuai file yang kamu punya
+  Animal(
+    name: "African Grey Parrot",
+    type: "Bird",
+    weight: 0.4,
+    habitat: ["Rainforest"],
+    height: 33,
+    activities: ["Flying", "Mimicking", "Eating Seeds"],
+    image: "https://images.pexels.com/photos/97533/pexels-photo-97533.jpeg",
+  ),
+  Animal(
+    name: "Green Sea Turtle",
+    type: "Reptile",
+    weight: 160.0,
+    habitat: ["Ocean", "Coastal"],
+    height: 120,
+    activities: ["Swimming", "Diving", "Resting"],
+    image: "https://images.pexels.com/photos/2289462/pexels-photo-2289462.jpeg",
+  ),
+  Animal(
+    name: "Siberian Husky",
+    type: "Dog",
+    weight: 27.0,
+    habitat: ["Domestic"],
+    height: 60,
+    activities: ["Running", "Pulling Sled", "Playing"],
+    image: "https://images.pexels.com/photos/245035/pexels-photo-245035.jpeg",
+  ),
+  Animal(
+    name: "Giant Panda",
+    type: "Mammal",
+    weight: 100.0,
+    habitat: ["Bamboo Forest"],
+    height: 75,
+    activities: ["Eating Bamboo", "Climbing", "Sleeping"],
+    image: "https://images.pexels.com/photos/32607009/pexels-photo-32607009.jpeg",
+  ),
 ];
